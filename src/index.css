@@ -1,0 +1,35 @@
+@import 'tailwindcss';
+
+/* Клас-базова темна тема: вмикається класом .dark на <html> (хук useTheme),
+   а не системним prefers-color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Дизайн-токени застосунку. Бренд майстерні нагород Rezanok — тепле «золото»
+   нагород (primary) на нейтральному charcoal-фоні. */
+@theme {
+  --color-primary-50: #fff8eb;
+  --color-primary-100: #feefc7;
+  --color-primary-200: #fddf8a;
+  --color-primary-300: #fcc94d;
+  --color-primary-400: #fbb424;
+  --color-primary-500: #f59e0b;
+  --color-primary-600: #d97706;
+  --color-primary-700: #b45309;
+  --color-primary-800: #92400e;
+  --color-primary-900: #78350f;
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Базові стилі: кольори тла/тексту за замовчуванням та плавний перехід теми. */
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
+  body {
+    @apply bg-neutral-50 text-neutral-900 antialiased;
+  }
+  .dark body {
+    @apply bg-neutral-950 text-neutral-100;
+  }
+}
